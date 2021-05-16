@@ -1,0 +1,49 @@
+06.05.2021
+==========
+
+JENKINS
+=======
+
+Jenkins is a free and open source automation server. It helps automate the parts of software development related to building, testing, and deploying, facilitating continuous integration and continuous delivery. It is a server-based system that runs in servlet containers such as Apache Tomcat
+
+Platform: Java 8, Java 11
+Programming language: Java
+
+Stable release: 2.281 / 6 March 2021; 46 days ago
+Initial release: 2 February 2011
+
+How jenkins works
+-----------------
+
+First, a developer commits the code to the source code repository. ... Soon after a commit occurs, the Jenkins server detects the changes that have occurred in the source code repository. Jenkins will pull those changes and will start preparing a new build. If the build fails, then the concerned team will be notified
+
+
+why we use jenkins
+------------------
+
+Jenkins is used to build and test your software projects continuously making it easier for developers to integrate changes to the project, and making it easier for users to obtain a fresh build
+
+
+official document page
+----------------------
+
+https://www.jenkins.io
+
+
+jenkins is a java application, jenkins used for continous integration and continous delivery
+
+what is mean by cicd
+-------------------
+
+.we have different developer, developer change code in local machine and check in code in shared repository which can be git or bitbucket or tfs 
+
+. at and of the day jenkins pull changes from git and trigger a build the code incase any error in code build failed concern person will notified
+
+. once code commited jenkins trigger a build and test the code and sent notification if scuccess it's deploy in to production server this is called cicd
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+

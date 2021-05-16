@@ -1,0 +1,220 @@
+06.05.2021
+=========
+
+Download and install jenkins
+----------------------------
+
+step 1
+------
+
+. Go to official document page
+
+https://www.jenkins.io
+
+
+. click install jenkins
+
+
+vim install-jenkins.sh
+#!/bin/bash
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > \
+    /etc/apt/sources.list.d/jenkins.list'
+sudo apt-get update -y 
+sudo apt-get install jenkins -y
+
+
+
+sh install-jenkins.sh
+
+
+Installation of Java
+--------------------
+
+vim install-java.sh
+
+#!/bin/bash
+
+sudo apt update
+
+sudo apt search openjdk
+
+sudo apt install openjdk-11-jdk
+
+java -version
+
+
+sh install-java.sh
+
+
+Start Jenkins
+
+Register the Jenkins service with the command:
+
+$ sudo systemctl daemon-reload
+
+
+
+
+You can start the Jenkins service with the command:
+
+$ sudo systemctl start jenkins
+
+You can check the status of the Jenkins service using the command:
+
+$ sudo systemctl status jenkins
+
+
+
+http://localhost:8080
+
+Admin password
+
+ cat /var/lib/jenkins/secrets/initialAdminPassword
+a8e627c15d7043229de222a75d406f56
+
+
+install suggested plugins
+
+
+--------------------------------------------------------------------------------------------------------------------
+
+10.05.2021
+----------
+
+change jenkins home directory
+-----------------------------
+
+step1:
+
+$ sudo -i
+
+# systemctl stop jenkins
+
+# systemctl status jenkins 
+
+# mkdir /home/rits-3/jenkins_newhome
+
+# sudo chown jenkins:jenkins /home/rits-3/jenkins_newhome	
+
+# sudo cp -prv /var/lib/jenkins /home/rits-3/jenkins_newhome	
+
+# change jenkins user home directory
+------------------------------------
+
+# sudo usermod -d /home/rits-3/jenkins_newhome jenkins	
+
+sudo vi /etc/default/jenkins	
+
+change home directory location
+
+# jenkins home location
+JENKINS_HOME=/home/rits-3/jenkins_newhome	
+
+
+# systemctl start jenkins
+
+cat /home/rits-3/jenkins_newhome/secrets/initialAdminPassword 
+9efb5173e6864c8788c5da3c1eb96354
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+16.05.2021
+==========
+
+http:localhost:8080
+
+create user + manage user + create roles + manage roles
+-------------------------------------------------------
+
+step1 : Manage Jenkins -> create user 
+
+
+step2: Manage jenkins -> Mabage plugin ->  Role-based Authorization Strategy plugin
+
+
+step3 :  Manage jenkins -> configure Global security -> Authorization -> Role-Based Strategy -> apply -> save
+
+
+step4: logout and login with new user
+
+Access Denied
+
+user1 is missing the Overall/Read permission
+
+
+ create role and assig to user
+------------------------------
+
+step 5: Manage jenkins -> Manage and Assign Roles -> manage Roles
+
+1. Global role
+
+2. item role
+
+3. Node role
+
+
+
+Global role -> role name -> add role > select permission -> apply -> save
+
+
+item role -> role name  pattern ex: Dev.*-> add role > select permission -> apply -> save
+
+item role -> role name  pattern ex: Dev.*-> add role > select permission -> apply -> save
+
+
+step 6: Manage Jenkins -> Manage and Assign Roles -> Assign role -> add user -> assign role -> apply -> save
+
+
+step 7 : create new item -> Devproject1 -> select project -> ok -> apply -> save
+
+
+logout aand login with new user
+
+
+create new item -> Testproject1 -> select project -> ok -> apply -> save
+
+
+logout aand login with new user
+
+
+------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
