@@ -42,8 +42,7 @@ what is mean by cicd
 . once code commited jenkins trigger a build and test the code and sent notification if scuccess it's deploy in to production server this is called cicd
 
 -----------------------------------------------------------------------------------------------------------------------------
-
-
+ 
 
 
 

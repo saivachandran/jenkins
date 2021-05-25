@@ -176,10 +176,118 @@ logout aand login with new user
 create new item -> Testproject1 -> select project -> ok -> apply -> save
 
 
-logout aand login with new user
+logout and login with new user
 
 
 ------------------------------------------------------------------------------------------------------------------
+
+18.05.2021
+==========
+
+Basic configuration in jenkins
+------------------------------
+
+manage jenkins -> configure system -> view home directory
+
+system message [Hi this is saiva jenkins server]
+
+ of executorsv -> number of parallel job jenkins should run
+
+
+
+Manage jenkins -> add nodes > make jenkins as master > add nodes execution on different nodes
+
+
+restric project naming
+
+pattern Test.*
+
+Jenkins location
+
+
+
+
+--------------------------------------------------------------------------------------------------------------
+
+24.05.2021
+----------
+
+jobs in jenkins
+---------------
+
+
+step1: jenkins -> newitem ->project name -> freestyle project -> ok
+
+
+step2: select project -> configure -> general -> sourcecode management -> build trigger -> enviroment -> build -> postbuild actions
+
+
+general -> describtion -> give using html tag like <h1>saiva</h1> ->priview > apply -> ok
+
+
+build trigger -> build periodicaly -> H/15 * * * * > apply -> save -> click project -> clickbuild -> check dashboard
+
+
+build -> execute shell > date -> apply->save 
+
+
+click project -> show console output 
+
+
+build trigger remotely
+----------------------
+
+clickproject->configure -> build trigger -> build trigger remotely -> copy url -> changeaccordingly
+
+---------------------------------------------------------------------------------------------------------------------------
+
+25.05.2021
+----------
+
+jenkins integrate with git
+--------------------------
+
+
+# mkdir jen
+
+# cd jen
+
+# vim loop.py
+
+fruits = ["apple", "banana", "cherry"]
+for x in fruits:
+  print(x)
+
+python loop.py
+
+apple
+banana
+cherry
+
+
+create repo in github
+---------------------
+
+
+create new job in jenkins
+
+
+newitem -> name of project -> ok -> scm -> select git -> add repo -> build -> execute shell > python loop.py -> apply -> save
+
+select project -> poll scm -> configure schedule -> build -> success blue color -> view console o/p
+
+-------------------------------------------------------------------------------------------------------
+
+
+ 
+
+
+	
+
+
+
+
+
 
 
 
