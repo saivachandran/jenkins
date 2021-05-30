@@ -278,6 +278,120 @@ select project -> poll scm -> configure schedule -> build -> success blue color 
 
 -------------------------------------------------------------------------------------------------------
 
+29.05.2021
+==========
+
+Automated deployment in jenkins
+-------------------------------
+
+
+create job
+----------
+
+New item -> job name -> select free style project -> ok 
+
+select job > configure -> scm -> select git -> past github url -> build section -> select shell -> sudo docker build -t jenkins/cicd, sudo docker-compose up -d
+
+before add jenkins user with nopassword 
+
+--------------------------------------------------------------------------------------------------
+
+30.05.2021
+==========
+
+Jenkins Email Notifications
+---------------------------
+
+install postfix and mailutils 
+
+
+
+$ sudo apt install postfix
+
+
+$ sudo cp /etc/postfix/main.cf /etc/postfix/main.cf.backup
+
+
+
+$ sudo vim /etc/postfix/main.cf
+
+
+myhostname = mail.domain.com
+
+mydomain = domain.com
+
+myorigin = $mydomain
+    
+#Parameters for the interface used for listening ports:
+
+inet_interfaces = localhost
+
+inet_protocols = ipv4
+
+mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain
+
+mynetworks = 127.0.0.0/8
+
+relay_domains = $mydestination
+
+#Backing directory for saving mailboxes
+
+home_mailbox = Maildir/
+
+
+$ sudo systemctl enable postfix
+
+$ sudo systemctl start postfix
+
+Remember that any further modification to the configuration files, would entail the need to reload the service:
+
+$ sudo systemctl reload postfix
+
+In case of problems, remember that the status and operating parameters on Postfix may be examined in detail by using the log file in the directory:
+
+$ sudo tail /var/log/mail.log
+
+sudo telnet localhosr 25
+
+
+
+
+
+
+
+Manage Jenkins -> configure system -> Email-Notification -> smtp server = smtp.gmail.com -> Default user e-mail suffix = @gmail.com -> 
+
+
+Use SMTP Authentication
+
+User Name
+
+Password
+
+Concealed
+
+Use SSL
+
+
+SMTP Port
+
+Reply-To Address
+
+
+Apply
+
+save
+
+
+create job
+----------
+
+
+new item -> projectname -> after build -> Email notication -> email id -> apply save 
+
+select job -> build -> if job fail -> job notified via email
+
+---------------------------------------------------------------------------------------------------------------------------
 
  
 
