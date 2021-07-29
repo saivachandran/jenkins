@@ -130,7 +130,7 @@ create user + manage user + create roles + manage roles
 step1 : Manage Jenkins -> create user 
 
 
-step2: Manage jenkins -> Mabage plugin ->  Role-based Authorization Strategy plugin
+step2: Manage jenkins -> Manage plugin ->  Role-based Authorization Strategy plugin
 
 
 step3 :  Manage jenkins -> configure Global security -> Authorization -> Role-Based Strategy -> apply -> save
@@ -170,7 +170,7 @@ step 6: Manage Jenkins -> Manage and Assign Roles -> Assign role -> add user -> 
 step 7 : create new item -> Devproject1 -> select project -> ok -> apply -> save
 
 
-logout aand login with new user
+logout and login with new user
 
 
 create new item -> Testproject1 -> select project -> ok -> apply -> save
@@ -391,10 +391,241 @@ new item -> projectname -> after build -> Email notication -> email id -> apply 
 
 select job -> build -> if job fail -> job notified via email
 
----------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------.
 
- 
+31.05.2021
+==========
 
+Delivery pipeline in jenkins
+----------------------------
+
+step 1
+------
+
+install delivey pipeline
+
+
+step 2
+------
+
+create 3 jobs
+
+SampleBuildJob
+
+SampleDeployJob
+
+SampleTestJob
+
+
+step 3
+------
+
+chain together
+--------------
+
+seletc deploy job -> configure -> build trigger section -> build after another project = SampleBuildJob-> apply -> ok
+
+seletc test job -> configure -> build trigger section -> build after another project = SampleDeployJob-> applt -> ok
+
+
+run and check
+
+
+step 4
+-------
+
+dash board -> click plus symbol -> add pipeline name -> component add -> add job and jobe name -> apply -> save
+
+run and validate
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+build pipeline in jenkins
+-------------------------
+
+jenkins dashboard -> click plus symbol -> select build pipe line view -> type name -> inital job -> number of job view -> console o/p view -> ok
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+Jenkins-cli
+-----------
+
+http://192.168.43.49:8080/cli
+
+
+download jar file move to jenkins folder
+
+
+Mange jenkins -> Global security -> authorization ->  Anyone can do anything -> apply -> ok
+
+
+java -jar jenkins-cli.jar -s http://192.168.43.49:8080/ -webSocket restart
+
+
+------------------------------------------------------------------------------------------------------------------------------
+24.07.2021
+----------
+
+jenkins plugin
+--------------
+
+Manage jenkins -> plugins -> updates -> available -> installed -> advanced
+
+
+available -> monitoring plugin -> install -> without restart -> monitor jenkins master
+
+
+--------------------------------------------------------------------------------------------
+
+jenkins security
+---------------
+
+Manage jenkins -> global security-> enable >------------------------------------
+
+27.07.2021
+==========
+
+Jenkins pipeline declerative command
+-------------------------------------
+
+Manage jenkins - Manage plugin -> install pipeline plugin
+
+
+New item -> job name -> select pipeline->
+
+
+Jenkinsfile (Declarative Pipeline)
+
+pipeline {
+    agent any 
+    stages {
+        stage('Stage 1') {
+            steps {
+                echo 'Hello world!' 
+            }
+        }
+    }
+}
+
+
+
+apply and save
+
+
+build job
+
+---------------------------------------------------------------------------------------
+
+three stage jenkins pipeline
+----------------------------
+
+Jenkinsfile
+
+pipeline {
+    
+    agent any 
+    
+    stages {
+        
+        stage ('build') {
+            
+            steps {
+                
+                echo "This is build"
+            }
+        }
+        
+        stage ('test') {
+            
+            steps {
+                
+                echo "This is build test"
+            }
+        }
+        
+        stage ('Deploy') {
+            
+            steps {
+                
+                echo "This is deploy"
+            }
+        }
+    }
+    
+}
+
+
+
+Apply and save
+
+
+build job
+
+
+-----------------------------------------------------------------------------------------
+
+ansible integrate with jenkins
+==============================
+
+
+Manage jenkins -> Manage plugins -> Available -> install Ansible plugin 
+
+
+New job -> demo-ansible -> select pipeline ->
+
+
+pipeline {
+    
+    agent any
+    
+    stages {
+        
+        stage  ("SCM Checkout") {
+            
+            steps  { 
+                
+               git 'https://github.com/saivachandran/ansible-jenkins.git' 
+                
+            }
+            
+            
+            
+            
+        }
+         stage  ("Deploy Ansible playbook") {
+             
+            steps  { 
+                
+              ansiblePlaybook credentialsId: 'sai', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: 'apache-install.yml'
+            } 
+             
+             
+             
+         }
+             
+            
+        
+            
+            
+            
+            
+            
+            
+        }
+        
+    }
+    
+
+
+
+apply and save
+
+
+Build pipeline
+
+
+----------------------------------------------------------------------------------------------------
 
 	
 
