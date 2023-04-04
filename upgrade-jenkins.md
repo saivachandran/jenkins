@@ -16,8 +16,10 @@
  # Update your local package index, then finally install Jenkins:
 
 
-``    
+```   
   sudo apt-get update
   sudo apt-get install fontconfig openjdk-11-jre
   sudo apt-get install jenkins
 ```  
+
+[upgrade link](https://pkg.jenkins.io/debian-stable/)
